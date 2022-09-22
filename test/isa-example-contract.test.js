@@ -5,7 +5,7 @@ const { ethers } = require("hardhat");
 const errors = {
 };
 
-describe("IsA.sol", () => {
+describe("IsaExampleContract.sol", () => {
 
     let contract;
     
@@ -13,7 +13,7 @@ describe("IsA.sol", () => {
     [owner, user1, user2, randomUser] = await ethers.getSigners();
     // Deploy contract
     const contractFactory = await ethers.getContractFactory(
-      "IsA"
+      "IsaExampleContract"
     );
     contract = await contractFactory.deploy();
   });

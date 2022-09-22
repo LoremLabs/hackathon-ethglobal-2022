@@ -1,13 +1,22 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.0;
 
-// Uncomment this line to use console.log
-import "hardhat/console.sol";
+// import '@openzeppelin/contracts/utils/introspection/ERC165.sol';
 
-contract IsA {
-    address payable public owner;
+/**
+ * @title Isa
+ * @dev Contract for adding Isa Protocol and tangential attribute support
+ */
+contract Isa {
+ 
+ /**
+     * @dev See {IERC165-supportsInterface}.
+     */
+     // TODO: add 165
+    // function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+    //     return interfaceId == type(Isa).interfaceId;
+    // }
 
-    constructor() payable {
-        owner = payable(msg.sender);
-    }
+
+
 }
