@@ -1,0 +1,12 @@
+{
+  "name": "isa-thing-protocol",
+  "version": "0.0.1",
+  "description": "IsA Thing Protocol",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["web3","ethereum","solidity","ethglobal-2022-hackathon"],
+  "author": "Matt Mankins <mankins@gmail.com>",
+  "license": "See LICENSE"
+}
