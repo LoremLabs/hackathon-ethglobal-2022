@@ -1,0 +1,10 @@
+.env
+tmp
+coverage
+coverage.json
+node_modules
+dist
+.DS_Store
+#Hardhat files
+cache
+artifacts
