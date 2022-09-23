@@ -5,7 +5,7 @@ const { ethers } = require("hardhat");
 const errors = {
 };
 
-describe("IsaExampleContract.sol", () => {
+describe("BlessedExampleContract.sol", () => {
 
     let contract;
     
@@ -13,7 +13,7 @@ describe("IsaExampleContract.sol", () => {
     [owner, user1, user2, randomUser] = await ethers.getSigners();
     // Deploy contract
     const contractFactory = await ethers.getContractFactory(
-      "IsaExampleContract"
+      "BlessedExampleContract"
     );
     contract = await contractFactory.deploy();
   });
@@ -26,11 +26,11 @@ describe("IsaExampleContract.sol", () => {
   });
 
   describe("Inherits Correctly", () => {
-    it("supports ERC165", async function () {
-      expect(await contract.supportsInterface("0x01ffc9a7")).to.eq(true);
-    });
+    // it("supports ERC165", async function () {
+    //   expect(await contract.supportsInterface("0x01ffc9a7")).to.eq(true);
+    // });
     // TODO
-    // it("supports Isa", async function () {
+    // it("supports Blessed", async function () {
     //   expect(await contract.supportsInterface("TODO")).to.eq(true);
     // });
   });

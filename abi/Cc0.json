@@ -1,0 +1,4 @@
+[
+  "constructor() payable",
+  "function blessedAs(string,string) view returns (string)"
+]

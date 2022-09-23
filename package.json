@@ -1,7 +1,7 @@
 {
-  "name": "isa-thing-protocol",
+  "name": "blessed-things-protocol",
   "version": "0.0.1",
-  "description": "IsA Thing Protocol",
+  "description": "Blessed Things Protocol",
   "scripts": {
     "test": "hardhat test",
     "test:gas": "REPORT_GAS=true npx hardhat test",
@@ -14,6 +14,8 @@
   "keywords": [
     "web3",
     "ethereum",
+    "blessed",
+    "referrents",
     "solidity",
     "ethglobal-2022-hackathon"
   ],
