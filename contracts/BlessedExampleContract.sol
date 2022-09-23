@@ -8,7 +8,7 @@ import "hardhat/console.sol";
 // Blessed Description System
 import "./blessed/Blessed.sol";     // the base mapping
 
-// adding support for an Blessed capable license
+// adding support for a Blessed capable license
 import "./blessed/things/license/Cc0.sol";  
 
 contract BlessedExampleContract is Blessed, Cc0 {
