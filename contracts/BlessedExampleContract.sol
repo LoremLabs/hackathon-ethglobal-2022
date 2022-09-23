@@ -16,13 +16,15 @@ contract BlessedExampleContract is Blessed, Cc0 {
 
     constructor() payable {
         owner = payable(msg.sender);
+
+        // manually set blessed things if needed
         // blessedAs["foo"]["bar"] = "bazz";
 
-        // assert(keccak256(bytes(blessedAs['foo']['bar'])) == keccak256(bytes("zoo")));
-        console.log("foo->bar = %s", blessedAs["foo"]["bar"]);
-        console.log("license = %s", blessedAs["license"]["url"]);
+        // for debugging we could:
+        // assert(keccak256(bytes(blessedAs['license']['slug'])) == keccak256(bytes("license-cc0")));
+        // console.log("license = %s", blessedAs["license"]["url"]);
+        // console.log("foo bar %s", blessedAs["foo"]["bar"]);
 
-        // Blessed isa = new Blessed();
 
     }
 }
