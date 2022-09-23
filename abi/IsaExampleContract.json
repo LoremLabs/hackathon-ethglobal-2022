@@ -1,4 +1,5 @@
 [
   "constructor() payable",
-  "function owner() view returns (address)"
+  "function owner() view returns (address)",
+  "function supportsInterface(bytes4) view returns (bool)"
 ]
