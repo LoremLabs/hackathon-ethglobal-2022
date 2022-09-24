@@ -12,11 +12,13 @@ import "./blessed/Blessed.sol";     // the base mapping
 import "./blessed/things/license/Cc0.sol";  
 
 contract BlessedExampleContract is Blessed, Cc0 {
-    address payable public owner;
+
+    event ShowBlessedProperty(
+        string name,
+        string value
+    );
 
     constructor() payable {
-        owner = payable(msg.sender);
-
         // manually set blessed things if needed
         // blessedAs["foo"]["bar"] = "bazz";
 
@@ -24,7 +26,6 @@ contract BlessedExampleContract is Blessed, Cc0 {
         // assert(keccak256(bytes(blessedAs['license']['slug'])) == keccak256(bytes("license-cc0")));
         // console.log("license = %s", blessedAs["license"]["url"]);
         // console.log("foo bar %s", blessedAs["foo"]["bar"]);
-
-
+        emit ShowBlessedProperty('license:slug', blessedAs['license']['slug']);
     }
 }

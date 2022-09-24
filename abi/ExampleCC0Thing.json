@@ -1,0 +1,5 @@
+[
+  "constructor()",
+  "function doinit() returns (bool)",
+  "function tf() view returns (bool)"
+]

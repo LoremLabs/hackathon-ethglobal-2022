@@ -1,5 +1,5 @@
 [
   "constructor() payable",
-  "function blessedAs(string,string) view returns (string)",
-  "function owner() view returns (address)"
+  "event ShowBlessedProperty(string,string)",
+  "function blessedAs(string,string) view returns (string)"
 ]

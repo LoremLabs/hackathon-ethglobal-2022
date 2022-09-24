@@ -1,9 +1,3 @@
-// import 'dotenv/config'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-
-// import { task } from "hardhat/config";
-
-// import "@nomiclabs/hardhat-waffle";
-
 require("dotenv").config();
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
