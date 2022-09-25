@@ -17,7 +17,7 @@ contract Tagger {
     }
 
     Tags[] internal tags;
-    string public constant NO_TAG_REF = "0x0"; // or 0xffffffff ? -- used when tag has no ref address
+    string internal constant NO_TAG_REF = "0x0"; // or 0xffffffff ? -- used when tag has no ref address
 
     // setTag("license:cc0", "0xabc123")
     function setTag(string memory _toTag, string memory _toTagRef) internal {
@@ -70,7 +70,7 @@ contract Tagger {
                 tags[i].ref,
                 '"'
             );
-            if (i < tags.length) {
+            if (i < tags.length -1) {
                 serialized = string.concat(serialized, ",");
             }
         }

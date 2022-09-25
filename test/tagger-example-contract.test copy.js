@@ -35,8 +35,7 @@ describe("TaggerExampleContract.sol", () => {
   // TODO: move to own files
   describe("Sets the Correct Tagger", () => {
     it("supports base Tagger interface", async function () {
-      // expect(typeof contract.setTag).to.eq("function");
-      expect(await contract.NO_TAG_REF()).to.eq("0x0"); // basic test
+      expect(typeof contract.jsonTags).to.eq("function");
     });
 
     it("supports tags", async function () {

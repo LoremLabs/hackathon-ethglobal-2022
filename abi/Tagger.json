@@ -1,6 +1,5 @@
 [
   "event TagSet(string,string)",
-  "function NO_TAG_REF() view returns (string)",
   "function existsTag(string) view returns (bool)",
   "function getTagRef(string) view returns (string)",
   "function jsonTags() view returns (string)"
