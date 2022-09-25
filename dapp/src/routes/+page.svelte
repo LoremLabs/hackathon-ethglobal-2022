@@ -47,7 +47,7 @@
     }
 
     // check if dev
-    const allowedNetwork = dev ? 4 : 1;
+    const allowedNetwork = dev ? 4 : 4; // TODO 4: 1 ... currently hard coded to rink
     const allowedNetworkName = dev ? 'Rinkeby' : 'Mainnet';
     if (chainId != allowedNetwork) {
       alert(`Please connect to ${allowedNetworkName} ${chainId}`);
