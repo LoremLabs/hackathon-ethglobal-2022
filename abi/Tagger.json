@@ -1,4 +1,3 @@
 [
-  "constructor() payable",
   "function taggedAs(string,string) view returns (string)"
 ]

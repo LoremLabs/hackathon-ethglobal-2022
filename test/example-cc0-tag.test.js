@@ -1,21 +1,21 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-const { getAmountFromWei, getAmountInWei } = require("../utils/helper-scripts");
+const { getAmountInWei } = require("../utils/helper-scripts");
 
 const errors = {};
 
-describe("ExampleCC0Thing.sol", () => {
+describe("ExampleCC0Tag.sol", () => {
   let contract, license;
 
   beforeEach(async () => {
     [owner, user1, user2, randomUser] = await ethers.getSigners();
     // Deploy contract
-    const contractFactory = await ethers.getContractFactory("ExampleCC0Thing");
+    const contractFactory = await ethers.getContractFactory("ExampleCC0Tag");
     contract = await contractFactory.deploy();
     // await contract.deployed();
     const licenseAddress = await contract.license();
-    license = await ethers.getContractAt("Thing", licenseAddress);
+    license = await ethers.getContractAt("Tag", licenseAddress);
   });
 
   describe("Correct Deployment", () => {
@@ -34,8 +34,8 @@ describe("ExampleCC0Thing.sol", () => {
     // });
   });
 
-  describe("Sets the Correct Blessed Things", () => {
-    it("supports base Thing interface", async function () {
+  describe("Sets the Correct Tag Interface", () => {
+    it("supports base Tag interface", async function () {
       const tx = await license.get("no-exist");
       expect(tx).to.eq("");
     });

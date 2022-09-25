@@ -5,16 +5,16 @@ pragma solidity ^0.8.9;
 
 // import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-import "./blessed/Thing.sol";
+import "./tags/Tag.sol";
 
-contract ExampleCC0Thing {
+contract ExampleCC0Tag {
     address public license;
     address public owner;
 
     constructor() {
         owner = msg.sender;
 
-        Thing License = new Thing("license", "cc0"); // (isA, slug)
+        Tag License = new Tag("license", "cc0"); // (isA, slug)
         license = address(License);
 
         // these are optional, but should have to make useful

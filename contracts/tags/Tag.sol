@@ -2,22 +2,22 @@
 pragma solidity ^0.8.0;
 
 /**
- * @title Thing (Simple)
- * @dev Contract for defining Thing references for Blessed Things Protocol
+ * @title Tag (Simple)
+ * @dev Contract for defining Tags as part of the Tagged Contracts Protocol
  */
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Thing is Ownable {
+contract Tag is Ownable {
     // this is the simple version, which isn't upgradable
-    event ThingCreated(
+    event TagCreated(
         string isa,
         string slug, // short-name
         uint256 blockTimestamp
     );
-    event ThingClaimIsActive(bool claimsEnabled);
-    event ThingClaimPriced(uint256 claimsPrice);
-    event ThingSet(string name, string value);
+    event TagClaimIsActive(bool claimsEnabled);
+    event TagClaimPriced(uint256 claimsPrice);
+    event TagSet(string name, string value);
 
     mapping(string => string) internal attributes; // just storing data: "foo" = "bar"
 
@@ -32,7 +32,7 @@ contract Thing is Ownable {
         createBlockTimestamp = block.timestamp;
         attributes["isa"] = thingIsa;
         attributes["slug"] = thingSlug;
-        emit ThingCreated(thingIsa, thingSlug, createBlockTimestamp);
+        emit TagCreated(thingIsa, thingSlug, createBlockTimestamp);
     }
 
     //
@@ -40,7 +40,7 @@ contract Thing is Ownable {
     //
     function set(string memory name, string memory value) public onlyOwner {
         attributes[name] = value;
-        emit ThingSet(name, value);
+        emit TagSet(name, value);
     }
 
     function get(string memory name) public view returns (string memory) {
@@ -52,12 +52,12 @@ contract Thing is Ownable {
     //
     function activateClaims(bool _claimsEnabled) public onlyOwner {
         claimsEnabled = _claimsEnabled;
-        emit ThingClaimIsActive(claimsEnabled);
+        emit TagClaimIsActive(claimsEnabled);
     }
 
     function setClaimPrice(uint256 _claimPrice) public onlyOwner {
         require(_claimPrice >= 0, "INVALID CLAIM PRICE");
         claimPrice = _claimPrice;
-        emit ThingClaimPriced(claimPrice);
+        emit TagClaimPriced(claimPrice);
     }
 }

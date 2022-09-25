@@ -1,18 +1,18 @@
-# Blessed Things Protocol - EthGlobal 2022 Hackathon
+# Tagged Contracts Protocol - EthGlobal 2022 Hackathon
 
-`Blessed Things` imagines a composable metadata layer where referential but related information can be stored on the blockchain in a consistent way that is easy for developers and users alike.
+`Tagged Contracts` imagines a composable metadata layer where free-form information can be stored on the blockchain in a consistent way that is easy for developers and users alike. *Think: Docker tags, for smart contracts.*
 
 ```
         // inside your contract / NFT
-        Thing License = new Thing("license", "cc0"); // (isA, slug)
+        Tagger License = new Tag("license", "cc0"); // (isA, slug)
 
         // these are optional, but should have to make useful set(key,val)
-        License.set(
+        Tagger.set(
             "url",
             "https://creativecommons.org/share-your-work/public-domain/cc0/"
         );
-        License.set("contact", '"Info" <info@creativecommons.org>'); // more info
-        License.set("description", "creative commons v0 license");
+        Tagger.set("contact", '"Info" <info@creativecommons.org>'); // more info
+        Tagger.set("description", "creative commons v0 license");
         // ... and add more if needed...
 
 ```
@@ -27,11 +27,13 @@ We are inspired by conversations [we have had](https://twitter.com/creativecommo
 
 Incidentally, the term `blessed` is inspired by Perl's [blessed refererents](https://www.perl.com/pub/1999/09/refererents.html/) which is inspirational for this design too.
 
-## Referential Attributes: Blessed Things
+We also imagine that applications like Etherscan could use our tagging feature to display the properties of contracts instead of requiring [manual configuration of labels](https://info.etherscan.com/public-name-tags-labels/).
 
-We use the term "referential attributes" to include data whose source is defined by another address. We call this referred address the `Blessed Thing`. Contracts that implement this protocol will define their blessed properties in a unique mapping namespace–for instance Things may be a License, Entitlement, Description, or some other "thing".
+## Referential Attributes: Tags
 
-Referential attributes are defined in a top-level contract map, whose keys are set by convention, and could grow in a fashion similar to the [Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml) used for TCP/UDP ports. Values are maps themselves and include at least an address and type field.
+We use the term "referential attributes" to include data whose source is defined by another address. We call this referred address the `Blessed Tag`. Contracts that implement this protocol will define their tags in a unique mapping namespace–for instance a Tag may represent a License, Entitlement, Description, or some other "thing".
+
+Tags are defined in a top-level contract map, whose keys are set by convention, and could grow in a fashion similar to the [Service Name and Transport Protocol Port Number Registry](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml) used for TCP/UDP ports. Values are maps themselves and include at least an address and type field.
 
 ## Approach
 
@@ -50,13 +52,13 @@ We can then provide consistent functions to answer common use cases:
 - "What license is this contract covered by?"
 - "What third parties can I go to if I need support?"
 
-## Referring to Things Via Contracts
+## Referring to Tags Via Contracts
 
-We recommend that `Thing Contracts` be deployed as a Proxy Contract to allow the definition of the `Thing`–for example the Creative Commons License, v0–to evolve over time. Should a contract wish to refer to a non-malleable definition for a Thing, it would simply refer to a fixed, non-upgradable contract.
+We recommend that `Tag Contracts` be deployed as a Proxy Contract to allow the definition of the `Tag`–for example the Creative Commons License, v0–to evolve over time. Should a contract wish to refer to a non-malleable definition for a Tag, it would simply refer to a fixed, non-upgradable contract.
 
-Contract deployers can use a `associate()` function on `Thing Contracts` to show that they support a given Thing. This reverse-map can be used to power user-interfaces to prove connections between parties. A double-opt-in could be imagined where the `Thing Contract` executes an `confirmAssociation()` function on the child contract.
+Contract deployers can use a `associate()` function on `Tag Contracts` to show that they support a given Thing. This reverse-map can be used to power user-interfaces to prove connections between parties. A double-opt-in could be imagined where the `Tag Contract` executes an `confirmAssociation()` function on the child contract.
 
-It should be noticed that `Things Contracts` are completely optional and use-case dependent.
+It should be noticed that `Tag Contracts` are completely optional and use-case dependent.
 
 # Usage
 

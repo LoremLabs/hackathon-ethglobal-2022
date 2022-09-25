@@ -1,5 +1,0 @@
-[
-  "constructor() payable",
-  "event ShowBlessedProperty(string,string)",
-  "function blessedAs(string,string) view returns (string)"
-]
