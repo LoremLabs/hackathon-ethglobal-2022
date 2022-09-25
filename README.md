@@ -2,6 +2,21 @@
 
 `Blessed Things` imagines a composable metadata layer where referential but related information can be stored on the blockchain in a consistent way that is easy for developers and users alike.
 
+```
+        // inside your contract / NFT
+        Thing License = new Thing("license", "cc0"); // (isA, slug)
+
+        // these are optional, but should have to make useful set(key,val)
+        License.set(
+            "url",
+            "https://creativecommons.org/share-your-work/public-domain/cc0/"
+        );
+        License.set("contact", '"Info" <info@creativecommons.org>'); // more info
+        License.set("description", "creative commons v0 license");
+        // ... and add more if needed...
+
+```
+
 ## Motivation and Inspiration
 
 The initial motivating use case is to provide a uniform way to add license information to NFTs to help answer questions like "What rights do I have if I own this NFT?".
