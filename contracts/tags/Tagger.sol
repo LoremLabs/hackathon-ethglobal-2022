@@ -44,7 +44,7 @@ contract Tagger {
         return false;
     }
 
-    // getTagRef("license:cc0") => "0x0"
+    // getTagRef("license:cc0") => "0x0abc"
     function getTagRef(string memory _tag) public view returns (string memory) {
         bytes32 lookingFor = keccak256(abi.encodePacked(_toLower(_tag)));
         for (uint256 i = 0; i < tags.length; i++) {
@@ -52,7 +52,7 @@ contract Tagger {
                 return tags[i].ref;
             }
         }
-        return NO_TAG_REF;
+        return "";
     }
 
     // TODO: delete, clear, etc.
