@@ -78,7 +78,7 @@ contract Tagger {
         return serialized; //string(abi.encodePacked(serialized));
     }
 
-    // string to lowercaes
+    // string to lowercase
     function _toLower(string memory str) internal pure returns (string memory) {
         bytes memory bStr = bytes(str);
         bytes memory bLower = new bytes(bStr.length);

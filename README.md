@@ -44,11 +44,11 @@ We could follow through with the approach outlined in the ["NFT Licensing Protoc
 
 Yet we question if a more general solution is needed that transcends the specifics of licensing and instead allows for the creation of a general-purpose tangential attribute store that could then be used to store license data.
 
-By using the general purpose data structure and taxonomy conventions we imagine a contract authors being able to create an ecosystem of referential attribute data stored on the blockchain.
+By using the general purpose data structure and taxonomy conventions we imagine that contract authors facilitate the creation of an ecosystem of referential attribute data stored on the blockchain. Essentially this turns a blob of data into a typed data.
 
-We considered an approach similar to [EIP-165](https://eips.ethereum.org/EIPS/eip-165) where the hash of attributes dictated an agreed-upon definition of the attribute. Yet these are more difficult to create the merely setting a string value. Indeed [EIP-1616](https://eips.ethereum.org/EIPS/eip-1616) attempted to do something similar but ultimately the approach was abandoned.
+We considered an approach similar to [EIP-165](https://eips.ethereum.org/EIPS/eip-165) where the hash of attributes dictated an agreed-upon definition of the attribute. Yet these are more difficult to create than merely setting a string value. Indeed [EIP-1616](https://eips.ethereum.org/EIPS/eip-1616) attempted to do something similar but ultimately the approach was abandoned.
 
-Instead, we chose to fix the place where `blessed things` live within the contract via a multi-dimensional mapping, and rely on convention of attribute names. This allows for top-level taxonomies, like {LICENSE, SUPPORTED_BY, HOMEPAGE} which can have domain-specific fields–ideally kept to the absolute minimum: the name, and an address to the referential address–the `Blessed Thing Definition`, itself a contract on the blockchain.
+Instead, we chose to fix the place where `tags` live within the contract, relying on convention of attribute names. This allows for colon delimited taxonomies, like {license:cc0, contact:email, or type:nft} which can have domain-specific fields–ideally kept to the absolute minimum. Each of these tags can then optionally include an address, the referential address or the `Tag`, which has more information.
 
 We can then provide consistent functions to answer common use cases:
 
