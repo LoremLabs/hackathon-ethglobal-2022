@@ -1,6 +1,8 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
+const { getAmountFromWei, getAmountInWei } = require("../utils/helper-scripts");
+
 const errors = {};
 
 describe("ExampleCC0Thing.sol", () => {
@@ -58,6 +60,14 @@ describe("ExampleCC0Thing.sol", () => {
           expect(thing).to.eq(fixture[1]);
         })
       );
+    });
+
+    it("sets claims prices", async function () {
+      expect(await license.claimPrice()).to.equal(
+        getAmountInWei(0.001)
+      );
+
+      
     });
   });
 });
