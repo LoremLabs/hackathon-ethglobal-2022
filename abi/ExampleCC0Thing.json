@@ -1,6 +1,5 @@
 [
   "constructor()",
   "function license() view returns (address)",
-  "function owner() view returns (address)",
-  "function tf() view returns (bool)"
+  "function owner() view returns (address)"
 ]

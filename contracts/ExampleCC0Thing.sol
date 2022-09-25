@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-import "hardhat/console.sol";
+// import "hardhat/console.sol";
 
 // import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
 import "./blessed/Thing.sol";
 
 contract ExampleCC0Thing {
-    bool public tf = true;
     address public license;
     address public owner;
 
