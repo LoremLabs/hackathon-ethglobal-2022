@@ -1,5 +1,0 @@
-[
-  "constructor() payable",
-  "event ShowTagProperty(string,string)",
-  "function taggedAs(string,string) view returns (string)"
-]

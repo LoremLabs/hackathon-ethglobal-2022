@@ -4,7 +4,7 @@ async function main() {
   
     console.log("Deploying contracts with the account:", deployer.address);
   
-    const factory = await ethers.getContractFactory('ExampleCC0Thing');
+    const factory = await ethers.getContractFactory('ExampleCC0Tag');
   
     const gasPrice = await factory.signer.getGasPrice();
     console.log(`Current gas price: ${gasPrice}`);

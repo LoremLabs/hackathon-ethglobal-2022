@@ -10,7 +10,7 @@ describe("TaggerExampleContract.sol", () => {
     [owner, user1, user2, randomUser] = await ethers.getSigners();
     // Deploy contract
     const contractFactory = await ethers.getContractFactory(
-      "TaggerExampleContract"
+      "ExampleTaggedContract"
     );
     contract = await contractFactory.deploy();
   });
@@ -35,27 +35,27 @@ describe("TaggerExampleContract.sol", () => {
   // TODO: move to own files
   describe("Sets the Correct Tagger", () => {
     it("supports base Tagger interface", async function () {
-      expect(typeof contract.taggedAs).to.eq("function");
-      expect(await contract.taggedAs("no-exist", "no-existe")).to.eq("");
+      // expect(typeof contract.setTag).to.eq("function");
+      expect(await contract.NO_TAG_REF()).to.eq("0x0"); // basic test
     });
 
-    it("supports cc0", async function () {
+    it("supports tags", async function () {
+
+      // setTag("license:cc0", "0x04943a8D464aC4f988453FD3690C85A6CEb2C66c"); // reference to more info
+      // setTag("author:matt-mankins"); // simple tag
+      // setTag("Example"); // simpler tag :), stored as lowercase
+      const NO_REF = "0x0";
       const fixtures = [
-        ["license", "slug", "license-cc0"],
-        ["license", "name", "creative commons 0"],
-        ["license", "address", "0x04943a8D464aC4f988453FD3690C85A6CEb2C66c"],
-        [
-          "license",
-          "url",
-          "https://creativecommons.org/share-your-work/public-domain/cc0/",
-        ],
+        ["license:cc0", "0x04943a8D464aC4f988453FD3690C85A6CEb2C66c"],
+        ["author:matt-mankins", NO_REF],
+        ["example", NO_REF],
       ];
 
       await Promise.all(
         fixtures.map(async (fixture) => {
-          let thing = await contract.taggedAs(fixture[0], fixture[1]);
+          let thing = await contract.getTagRef(fixture[0]);
           thing = thing.toString();
-          expect(thing).to.eq(fixture[2]);
+          expect(thing).to.eq(fixture[1]);
         })
       );
     });

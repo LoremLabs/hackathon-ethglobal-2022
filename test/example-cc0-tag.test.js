@@ -3,8 +3,6 @@ const { ethers } = require("hardhat");
 
 const { getAmountInWei } = require("../utils/helper-scripts");
 
-const errors = {};
-
 describe("ExampleCC0Tag.sol", () => {
   let contract, license;
 
@@ -42,7 +40,6 @@ describe("ExampleCC0Tag.sol", () => {
 
     it("supports cc0", async function () {
       const fixtures = [
-        ["slug", "cc0"],
         ["description", "creative commons v0 license"],
         ["isa", "license"],
         [
@@ -76,6 +73,8 @@ describe("ExampleCC0Tag.sol", () => {
       // const licenseOwner = await license.owner();
       // expect(licenseOwner).to.equal(await owner.address());
     });
+
+    // TODO: more coverage!
 
   });
 });
