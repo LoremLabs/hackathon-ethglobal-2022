@@ -5,13 +5,10 @@ import "hardhat/console.sol";
 
 // import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-// Blessed Description System
-import "./blessed/Blessed.sol"; // the base mapping
-
 // adding support for a Blessed capable license
 import "./blessed/things/license/Cc0.sol";
 
-contract BlessedExampleContract is Blessed, Cc0 {
+contract BlessedExampleContract is Cc0 {
     event ShowBlessedProperty(string name, string value);
 
     constructor() payable {

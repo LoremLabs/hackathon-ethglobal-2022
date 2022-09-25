@@ -37,6 +37,8 @@ contract BlessedManualExampleContract is Blessed {
 
 # Example 
 
+## Using a Thing in your own project
+
 ```
 pragma solidity ^0.8.9;
 
@@ -54,6 +56,9 @@ contract BlessedExampleContract is Blessed, Cc0 {
     }
 }
 ```
+
+Users can lookup the Thing at the address from more information.
+
 
 ## File to Mapping Conventions
 

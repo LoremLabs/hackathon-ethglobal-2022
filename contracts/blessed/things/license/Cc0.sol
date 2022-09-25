@@ -8,9 +8,11 @@ import "../../Blessed.sol";
 
 contract Cc0 is Blessed {
     constructor() payable {
+        // must have field: you'll need to deploy the Thing first to get the address
+        blessedAs["license"]["address"] = "0x0"; // TODO(you): write the address here!
+
         // should-really-have fields
         blessedAs["license"]["slug"] = "license-cc0"; // type + id
-        blessedAs["license"]["address"] = "0x0"; // it's all strings all the way down
 
         // optional fields...may not need these
         blessedAs["license"]["name"] = "creative commons 0";
