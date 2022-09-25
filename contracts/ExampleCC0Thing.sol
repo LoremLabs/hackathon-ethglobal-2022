@@ -10,8 +10,11 @@ import "./blessed/Thing.sol";
 contract ExampleCC0Thing {
     bool public tf = true;
     address public license;
+    address public owner;
 
     constructor() {
+        owner = msg.sender;
+
         Thing License = new Thing("license", "cc0"); // (isA, slug)
         license = address(License);
 

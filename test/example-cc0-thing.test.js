@@ -15,7 +15,7 @@ describe("ExampleCC0Thing.sol", () => {
     contract = await contractFactory.deploy();
     // await contract.deployed();
     const licenseAddress = await contract.license();
-    license = await ethers.getContractAt('Thing', licenseAddress);
+    license = await ethers.getContractAt("Thing", licenseAddress);
   });
 
   describe("Correct Deployment", () => {
@@ -34,10 +34,8 @@ describe("ExampleCC0Thing.sol", () => {
     // });
   });
 
-
   describe("Sets the Correct Blessed Things", () => {
     it("supports base Thing interface", async function () {
-
       const tx = await license.get("no-exist");
       expect(tx).to.eq("");
     });
@@ -63,11 +61,21 @@ describe("ExampleCC0Thing.sol", () => {
     });
 
     it("sets claims prices", async function () {
-      expect(await license.claimPrice()).to.equal(
-        getAmountInWei(0.001)
-      );
-
-      
+      expect(await license.claimPrice()).to.equal(getAmountInWei(0.001));
     });
+
+    it("activates claims", async function () {
+      expect(await license.claimsEnabled()).to.be.true;
+    });
+
+    it("should have correct owner address", async () => {
+      const contractOwner = await contract.owner();
+      expect(contractOwner).to.equal(owner.address);
+
+      // TODO: who owns the license? msg.sender?
+      // const licenseOwner = await license.owner();
+      // expect(licenseOwner).to.equal(await owner.address());
+    });
+
   });
 });

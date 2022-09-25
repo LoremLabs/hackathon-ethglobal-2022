@@ -28,6 +28,7 @@ contract Thing is Ownable {
     bool public claimsEnabled = false;
 
     constructor(string memory thingIsa, string memory thingSlug) {
+        //        _transferOwnership(_owner);
         createBlockTimestamp = block.timestamp;
         attributes["isa"] = thingIsa;
         attributes["slug"] = thingSlug;
