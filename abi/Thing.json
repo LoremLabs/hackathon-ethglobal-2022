@@ -1,4 +1,5 @@
 [
+  "constructor(string,string)",
   "event OwnershipTransferred(address indexed,address indexed)",
   "event ThingClaimIsActive(bool)",
   "event ThingClaimPriced(uint256)",

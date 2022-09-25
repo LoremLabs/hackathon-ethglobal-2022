@@ -15,16 +15,9 @@ contract Thing is Ownable {
         string slug, // short-name
         uint256 blockTimestamp
     );
-    event ThingClaimIsActive(
-        bool claimsEnabled
-    );
-    event ThingClaimPriced(
-        uint256 claimsPrice
-    );
-    event ThingSet(
-        string name,
-        string value
-    );
+    event ThingClaimIsActive(bool claimsEnabled);
+    event ThingClaimPriced(uint256 claimsPrice);
+    event ThingSet(string name, string value);
 
     mapping(string => string) internal attributes; // just storing data: "foo" = "bar"
 
@@ -34,14 +27,14 @@ contract Thing is Ownable {
     uint256 public createBlockTimestamp;
     bool public claimsEnabled = false;
 
-//     constructor(string memory thingIsa, string memory thingSlug) {
-//         createBlockTimestamp = block.timestamp;
-//         attributes['isa'] = thingIsa;
-//         attributes['slug'] = thingSlug;
-// //        emit ThingCreated(thingIsa, thingSlug, createBlockTimestamp);
-//     }
+    constructor(string memory thingIsa, string memory thingSlug) {
+        createBlockTimestamp = block.timestamp;
+        attributes["isa"] = thingIsa;
+        attributes["slug"] = thingSlug;
+        emit ThingCreated(thingIsa, thingSlug, createBlockTimestamp);
+    }
 
-    // 
+    //
     // attribute getters/setters
     //
     function set(string memory name, string memory value) public onlyOwner {
@@ -65,5 +58,5 @@ contract Thing is Ownable {
         require(_claimPrice >= 0, "INVALID CLAIM PRICE");
         claimPrice = _claimPrice;
         emit ThingClaimPriced(claimPrice);
-    }    
+    }
 }

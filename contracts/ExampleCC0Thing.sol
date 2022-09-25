@@ -5,32 +5,27 @@ import "hardhat/console.sol";
 
 // import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 
-// import "./things/license/LicenseCc0.sol";
+import "./blessed/Thing.sol";
 
 contract ExampleCC0Thing {
-
     bool public tf = true;
+    address public license;
 
     constructor() {
-    }
+        Thing License = new Thing("license", "cc0"); // (isA, slug)
+        license = address(License);
 
-    function doinit() public returns (bool) {
+        // these are optional, but should have to make useful
+        License.set(
+            "url",
+            "https://creativecommons.org/share-your-work/public-domain/cc0/"
+        );
+        License.set("contact", '"Info" <info@creativecommons.org>'); // more info
+        License.set("description", "creative commons v0 license");
+        // ... and add more if needed...
 
-        // configure our Thing -- Thing(isA, slug-name)
-        // a Thing is just a public mapping
-//   license = new Thing("license", "cc0"); // (isA, slug)
-//   license = new Thing(); // (isA, slug)
-
-//         // these are optional, but should have to make useful
-//         license.set('url', 'https://creativecommons.org/share-your-work/public-domain/cc0/');
-//         license.set('contact', '"Info" <info@creativecommons.org>'); // more info
-//         license.set('description', 'creative commons v0 license');
-//         // ... and add more if needed...
-
-//         // enable claims list
-//         license.activateClaims(true);
-//         license.setClaimPrice(0.001 ether);
-tf = false;
-return tf;
+        // enable claims list
+        License.activateClaims(true);
+        License.setClaimPrice(0.001 ether);
     }
 }

@@ -1,5 +1,5 @@
 [
   "constructor()",
-  "function doinit() returns (bool)",
+  "function license() view returns (address)",
   "function tf() view returns (bool)"
 ]
