@@ -11,7 +11,7 @@ if (process.env.REPORT_COVERAGE) {
   require("solidity-coverage");
 }
 
-const { task } = require("hardhat/config");
+const { task, run } = require("hardhat/config");
 
 const settings = {
   optimizer: {

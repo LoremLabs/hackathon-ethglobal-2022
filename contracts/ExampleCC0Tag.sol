@@ -27,7 +27,7 @@ contract ExampleCC0Tag is Tag {
             "url",
             "https://creativecommons.org/share-your-work/public-domain/cc0/"
         );
-        setTag("contact", '"Info" <info@creativecommons.org>'); // more info
+        setTag("contact", 'Info <info@creativecommons.org>'); // more info
         setTag("description", "creative commons v0 license");
         setTag("isa", "license");
         // ... and add more if needed...

@@ -14,16 +14,15 @@ abstract contract Tag is Ownable {
     event TagSet(string name, string value);
 
     mapping(string => string) internal attributes; // just storing data: "foo" = "bar"
-    string[] public keys; // TODO: refacfor this and ^^
+    string[] internal keys; // TODO: refacfor this and ^^
 
     // optional list of claims
     mapping(address => bool) public claimList;
     uint256 public claimPrice = 0.005 ether; // set to 0 if you want free claims
-    uint256 public createBlockTimestamp;
     bool public claimsEnabled = false;
     string public tag;
-    string public readmeTxt = "";
-    string public claimReadmeTxt = "";
+    string internal readmeTxt = "";
+    string internal claimReadmeTxt = "";
 
     // constructor(string memory _tag) {
     //     createBlockTimestamp = block.timestamp;
@@ -55,7 +54,7 @@ abstract contract Tag is Ownable {
                 attributes[keys[i]],
                 '"'
             );
-            if (i < keys.length) {
+            if (i < (keys.length -1)) {
                 serialized = string.concat(serialized, ",");
             }
         }

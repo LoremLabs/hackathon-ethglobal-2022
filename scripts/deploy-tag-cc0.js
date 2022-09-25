@@ -10,7 +10,7 @@ async function main() {
     console.log(`Current gas price: ${gasPrice}`);
   
     const estimatedGas = await factory.signer.estimateGas(
-      factory.getDeployTransaction(),
+      factory.getDeployTransaction('abc'),
     );
     console.log(`Estimated gas: ${estimatedGas}`);
   
@@ -26,7 +26,7 @@ async function main() {
       );
     }
   
-    const contract = await factory.deploy();
+    const contract = await factory.deploy("license:cc0");
   
     await contract.deployed();
   
