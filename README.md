@@ -4,16 +4,19 @@
 
 ```
         // inside your contract / NFT
-        Tagger License = new Tag("license", "cc0"); // (isA, slug)
 
-        // these are optional, but should have to make useful set(key,val)
-        Tagger.set(
-            "url",
-            "https://creativecommons.org/share-your-work/public-domain/cc0/"
-        );
-        Tagger.set("contact", '"Info" <info@creativecommons.org>'); // more info
-        Tagger.set("description", "creative commons v0 license");
-        // ... and add more if needed...
+contract ExampleTaggedContract is Tagger {
+    constructor() {
+        // setup our public tags and responding refs
+        // recommend using a : as delimeter of hierarchies
+        setTag("license:cc0", "0x04943a8D464aC4f988453FD3690C85A6CEb2C66c"); // reference to more info
+        setTag("author:matt-mankins"); // simple tag
+        setTag("Example"); // simpler tag :), stored as lowercase
+
+        // externally: get all with jsonTags()
+        // internally: existsTag(tag) or getTagRef(tag)
+    }
+}
 
 ```
 
@@ -62,16 +65,87 @@ It should be noticed that `Tag Contracts` are completely optional and use-case d
 
 # Usage
 
-TKTK
+## Tag Users
+Contracts can add tag support with:
 
-# Creating Things
+```
+import "./tags/Tagger.sol"; // todo: library on npm
 
-TKTK
+contract ExampleTaggedContract is Tagger {
+    constructor() {
+        // setup our public tags and responding refs
+        // recommend using a : as delimeter of hierarchies
+        setTag("license:cc0", "0x04943a8D464aC4f988453FD3690C85A6CEb2C66c"); // reference to more info
+        setTag("author:matt-mankins"); // simple tag
+        setTag("Example"); // simpler tag :), stored as lowercase
 
-# Linking with IsA Library
+        // externally: get all with jsonTags()
+        // internally: existsTag(tag) or getTagRef(tag)
+    }
+}
+```
+
+You would configure any `setTag` as needed, for instance `setTag("example")`.
+
+## Tag Makers
+
+Tag "makers" can then then create smart contracts that adhere to the `Tag Contract Protocol` like the following which will provide interfaces for end users and other contracts to query about the tag.
+
+```
+import "./tags/Tag.sol"; // would be library on npm
+
+/*
+ * This creates an example contract which can be queried to get "more info" about a tag.
+ * Also called the "Tag Reference" this contract is a place to go to get more information.
+ */
+contract ExampleCC0Tag is Tag {
+
+    constructor(string memory _tag) {
+        // create the tag reference
+        // Tag License = new Tag(_tag);
+        // license = address(License); // for testing
+        tag = _tag;
+
+        // a readme provides a basic overview and should be included
+        setTagReadme(
+            "This tag refers to the Creative Commons CC0 License.\n"
+            "CC0 (aka CC Zero) is a public dedication tool, which allows creators to give up their copyright and put their works into the worldwide public domain. CC0 allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, with no conditions."
+            "More information at https://creativecommons.org/share-your-work/public-domain/cc0/"
+        );
+
+        // these are optional, but could be useful to allow more granular querying
+        setTag(
+            "url",
+            "https://creativecommons.org/share-your-work/public-domain/cc0/"
+        );
+        setTag("contact", 'Info <info@creativecommons.org>'); // more info
+        setTag("description", "creative commons v0 license");
+        setTag("isa", "license");
+        // ... and add more if needed...
+
+        // Claims: Have your contract buy a license here by "buying a claim"
+
+        // enable claims to allow contracts to "purchase" the thing.
+        activateClaims(true);
+        setTagClaimPrice(0.001 ether);
+
+        // optional, setTagup a readme to show for people wanting info on claim purchase
+        setTagClaimReadme(
+            "Claims are available and entitle you to a license.\n"
+            "Details may apply, please check our website for more information."
+        );
+    }
+}
+
+```
+
+# Contact
+
+- Matt Mankins = matt@loremlabs.com.
+
 
 # Tests
 
 ```
-% npx hardhat run scripts/test.js --network mainnet --verbose
+% npm run test
 ```
