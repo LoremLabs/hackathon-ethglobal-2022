@@ -8,7 +8,7 @@ pragma solidity ^0.8.0;
 
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Tag is Ownable {
+abstract contract Tag is Ownable {
     event TagClaimIsActive(bool claimsEnabled);
     event TagClaimPriced(uint256 claimsPrice);
     event TagSet(string name, string value);
@@ -25,15 +25,15 @@ contract Tag is Ownable {
     string public readmeTxt = "";
     string public claimReadmeTxt = "";
 
-    constructor(string memory _tag) {
-        createBlockTimestamp = block.timestamp;
-        tag = _toLower(_tag); // license:cc0
-    }
+    // constructor(string memory _tag) {
+    //     createBlockTimestamp = block.timestamp;
+    //     tag = _toLower(_tag); // license:cc0
+    // }
 
     //
     // attribute getters/setters
     //
-    function set(string memory name, string memory value) public onlyOwner {
+    function setTag(string memory name, string memory value) public onlyOwner {
         attributes[name] = value;
         keys.push(name);
         emit TagSet(name, value);
@@ -80,7 +80,7 @@ contract Tag is Ownable {
     //
     // readme functions
     //
-    function setReadme(string memory _readme) public onlyOwner {
+    function setTagReadme(string memory _readme) public onlyOwner {
         readmeTxt = _readme;
     }
 
@@ -96,7 +96,7 @@ contract Tag is Ownable {
         emit TagClaimIsActive(claimsEnabled);
     }
 
-    function setClaimPrice(uint256 _claimPrice) public onlyOwner {
+    function setTagClaimPrice(uint256 _claimPrice) public onlyOwner {
         require(_claimPrice >= 0, "INVALID CLAIM PRICE");
         claimPrice = _claimPrice;
         emit TagClaimPriced(claimPrice);
@@ -106,7 +106,7 @@ contract Tag is Ownable {
     // function showProof(address) public {
     // }
 
-    function setClaimReadme(string memory _claimReadme) public onlyOwner {
+    function setTagClaimReadme(string memory _claimReadme) public onlyOwner {
         claimReadmeTxt = _claimReadme;
     }
 

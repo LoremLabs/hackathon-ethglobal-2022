@@ -1,5 +1,4 @@
 [
-  "constructor(string)",
   "event OwnershipTransferred(address indexed,address indexed)",
   "event TagClaimIsActive(bool)",
   "event TagClaimPriced(uint256)",
@@ -18,10 +17,10 @@
   "function readme() view returns (string)",
   "function readmeTxt() view returns (string)",
   "function renounceOwnership()",
-  "function set(string,string)",
-  "function setClaimPrice(uint256)",
-  "function setClaimReadme(string)",
-  "function setReadme(string)",
+  "function setTag(string,string)",
+  "function setTagClaimPrice(uint256)",
+  "function setTagClaimReadme(string)",
+  "function setTagReadme(string)",
   "function tag() view returns (string)",
   "function transferOwnership(address)"
 ]
